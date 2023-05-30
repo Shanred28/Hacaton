@@ -13,7 +13,6 @@ namespace Hacaton
 
 
         private Rigidbody _rigidbody;
-        private Vector3 _directionMove = new Vector3(0,0,1);
 
 
         private void Start () 
@@ -24,7 +23,7 @@ namespace Hacaton
 
         private void FixedUpdate()
         {
-            _rigidbody.velocity = _directionMove * _flySpeed;
+            _rigidbody.velocity = transform.forward * _flySpeed;
             _rigidbody.AddForce(0, -_gravity, 0, ForceMode.Impulse);
 
 
@@ -40,19 +39,14 @@ namespace Hacaton
 
         public void ControllMoveDronProwl(int prowl)
         {
-            _rigidbody.AddForce( _prowl * prowl, 0, 0, ForceMode.Impulse);
+            _rigidbody.AddRelativeForce( _prowl * prowl, 0, 0, ForceMode.Impulse);
         }
 
         public void TurningDron(float turning)
         { 
             var rotation = Quaternion.Euler(0, turning, 0);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * _flySpeed);
-           // gameObject.transform.Rotate(new Vector3(0, 90, 0), Space.World);
            transform.rotation = rotation;
-            _directionMove = new Vector3(-1, 0, 0);
-
-
-
+            
         }
     }
 }

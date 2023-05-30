@@ -9,7 +9,6 @@ namespace Hacaton
         [SerializeField] private PointerClickHold _UpButton;
         [SerializeField] private PointerClickHold _LeftButton;
         [SerializeField] private PointerClickHold _RightButton;
-        //[SerializeField] private PointerClickHold _UpButton;
 
         private void Update()
         {
