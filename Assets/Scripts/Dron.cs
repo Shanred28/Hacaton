@@ -9,10 +9,12 @@ namespace Hacaton
         [SerializeField] private float _gravity;
         [SerializeField] private float _Up;
         [SerializeField] private float _prowl;
-        [SerializeField] private Transform _visualModel;
+
+        [SerializeField] private Collider _collider;
 
 
         private Rigidbody _rigidbody;
+
 
 
         private void Start () 
@@ -26,9 +28,6 @@ namespace Hacaton
             _rigidbody.velocity = transform.forward * _flySpeed;
             _rigidbody.AddForce(0, -_gravity, 0, ForceMode.Impulse);
 
-
-            ControllMoveDronUp();
-            ControllMoveDronProwl(0);
         }
 
         public void ControllMoveDronUp()
@@ -47,6 +46,12 @@ namespace Hacaton
             var rotation = Quaternion.Euler(0, turning, 0);
            transform.rotation = rotation;
             
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {   
+            //Заглушка при столкновении. ПОДУМАТЬ И ИЗМЕНИТЬ!
+            _rigidbody.AddRelativeForce(-transform.forward * 10000);
         }
     }
 }

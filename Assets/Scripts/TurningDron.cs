@@ -32,7 +32,8 @@ namespace Hacaton
                 
                 if (turning == Turning.Right)
                 {
-                    dron.TurningDron(-90);
+                    dron.TurningDron(0);
+                    IsTurn = true;
                 }        
                 
                 if (turning == Turning.Forward)
@@ -40,6 +41,13 @@ namespace Hacaton
                     dron.TurningDron(0);
                 }
             }
+        }
+
+        private void OnTriggerExit(Collider other) 
+        {
+            if (other.transform.root.TryGetComponent<Dron>(out Dron dron))
+                IsTurn = false;
+
         }
 
     }
