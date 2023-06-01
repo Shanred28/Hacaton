@@ -12,8 +12,6 @@ namespace Hacaton
 
         private void Update()
         {
-
-
             Control();
         }
 

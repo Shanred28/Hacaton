@@ -14,20 +14,27 @@ namespace Hacaton
 
 
         private Rigidbody _rigidbody;
-
+        private bool IsCrashed = false;
 
 
         private void Start () 
         {
             _rigidbody = GetComponent<Rigidbody>();
-
         }
 
         private void FixedUpdate()
         {
-            _rigidbody.velocity = transform.forward * _flySpeed;
-            _rigidbody.AddForce(0, -_gravity, 0, ForceMode.Impulse);
+            if (IsCrashed == false)
+            {
+                _rigidbody.velocity = transform.forward * _flySpeed;
+                _rigidbody.AddForce(0, -_gravity, 0, ForceMode.Impulse);
+            }
 
+            if (IsCrashed == true) 
+            {
+                _rigidbody.AddRelativeForce(-transform.forward * 10000);
+                IsCrashed=false;
+            }
         }
 
         public void ControllMoveDronUp()
@@ -48,10 +55,10 @@ namespace Hacaton
             
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {   
-            //Заглушка при столкновении. ПОДУМАТЬ И ИЗМЕНИТЬ!
-            _rigidbody.AddRelativeForce(-transform.forward * 10000);
+        public void Crashed()
+        {
+            IsCrashed = true;
+            // Надо сюда анимаху,после столкновения с препятствием
         }
     }
 }
