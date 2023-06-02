@@ -20,7 +20,7 @@ namespace Hacaton
             if (transform.position == _MoveTarget)
             {
                 _perentSpawner.RemoveListVehicle(this);
-                Destroy(this);
+                Destroy(gameObject);
             }
                 
         }
