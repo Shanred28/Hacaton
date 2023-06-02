@@ -6,8 +6,8 @@
 /Library
 /Logs
 /obj
-/Packages
-/ProjectSettings
+Packages
+ProjectSettings
 /Temp
 /UserSettings
 /.vsconfig
