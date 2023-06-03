@@ -4,11 +4,16 @@ namespace Hacaton
 {
     public class CrashedObstacle : MonoBehaviour
     {
-        private void OnTriggerEnter(Collider other)
+        // Repulsive force, for rigi
+        [SerializeField] private float _collisionForce;
+
+        private void OnCollisionEnter(Collision collision)
         {
-            if (other.transform.root.TryGetComponent<Dron>(out Dron dron))
+            if (collision.transform.root.TryGetComponent<Dron>(out Dron dron))
             {
-                dron.Crashed();
+                var rb =dron.GetComponent<Rigidbody>();
+                var collisionNormal = collision.contacts[0].normal;
+                rb.AddForce(collisionNormal * _collisionForce, ForceMode.Impulse);
             }
         }
     }

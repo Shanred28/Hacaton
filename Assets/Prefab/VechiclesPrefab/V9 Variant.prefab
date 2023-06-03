@@ -19,21 +19,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5216751638969317613, guid: a7944936fb598d04aac261b5b694dba9,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 5216751638969317613, guid: a7944936fb598d04aac261b5b694dba9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 5216751638969317613, guid: a7944936fb598d04aac261b5b694dba9,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 5216751638969317613, guid: a7944936fb598d04aac261b5b694dba9,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.527143
       objectReference: {fileID: 0}
@@ -82,12 +67,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7852120089558746321, guid: a7944936fb598d04aac261b5b694dba9,
-        type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7852120089558746321, guid: a7944936fb598d04aac261b5b694dba9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7944936fb598d04aac261b5b694dba9, type: 3}
 --- !u!1 &1140231170752499143 stripped
 GameObject:
@@ -95,16 +76,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5547490673252659088}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6535396448873581822
-MonoBehaviour:
+--- !u!65 &8079621537843103044
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140231170752499143}
+  m_Material: {fileID: 13400000, guid: 117292b56a6777b409eb690071cb76a2, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baeb4bbfd52d7e04dbada8c347678043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedMove: 2
+  serializedVersion: 2
+  m_Size: {x: 3.325027, y: 2.2755167, z: 7.387431}
+  m_Center: {x: 0.124657236, y: 1.3459839, z: 0.10824541}

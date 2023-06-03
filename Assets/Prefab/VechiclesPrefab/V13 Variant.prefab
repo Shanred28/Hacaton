@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6618523892668005951, guid: be96a777da485cd40822becc86f63212,
-        type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8363081853756856505, guid: be96a777da485cd40822becc86f63212,
         type: 3}
       propertyPath: m_Name
@@ -21,21 +16,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170580147466732035, guid: be96a777da485cd40822becc86f63212,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170580147466732035, guid: be96a777da485cd40822becc86f63212,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170580147466732035, guid: be96a777da485cd40822becc86f63212,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.156048
       objectReference: {fileID: 0}
     - target: {fileID: 9170580147466732035, guid: be96a777da485cd40822becc86f63212,
         type: 3}
@@ -87,7 +67,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6618523892668005951, guid: be96a777da485cd40822becc86f63212, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be96a777da485cd40822becc86f63212, type: 3}
 --- !u!1 &2972203200917250740 stripped
 GameObject:
@@ -95,16 +76,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6715080017447156237}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1479027536513760241
-MonoBehaviour:
+--- !u!65 &6542759437561469613
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2972203200917250740}
+  m_Material: {fileID: 13400000, guid: 117292b56a6777b409eb690071cb76a2, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baeb4bbfd52d7e04dbada8c347678043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedMove: 2
+  serializedVersion: 2
+  m_Size: {x: 3.055384, y: 2.547699, z: 5.7179894}
+  m_Center: {x: 0.012823853, y: 1.4781535, z: 0.16681656}

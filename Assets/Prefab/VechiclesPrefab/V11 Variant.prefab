@@ -7,30 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6216025518333601273, guid: 7d16df492fb325e4c9fa1ce9deaf6387,
-        type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8277062107189598661, guid: 7d16df492fb325e4c9fa1ce9deaf6387,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277062107189598661, guid: 7d16df492fb325e4c9fa1ce9deaf6387,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277062107189598661, guid: 7d16df492fb325e4c9fa1ce9deaf6387,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.156048
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277062107189598661, guid: 7d16df492fb325e4c9fa1ce9deaf6387,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.156048
       objectReference: {fileID: 0}
     - target: {fileID: 8277062107189598661, guid: 7d16df492fb325e4c9fa1ce9deaf6387,
         type: 3}
@@ -87,7 +67,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: V11 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6216025518333601273, guid: 7d16df492fb325e4c9fa1ce9deaf6387, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7d16df492fb325e4c9fa1ce9deaf6387, type: 3}
 --- !u!1 &4627928964799519672 stripped
 GameObject:
@@ -95,16 +76,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4155815658968078535}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-727081916883903197
-MonoBehaviour:
+--- !u!65 &1166716784597286197
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4627928964799519672}
+  m_Material: {fileID: 13400000, guid: 117292b56a6777b409eb690071cb76a2, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baeb4bbfd52d7e04dbada8c347678043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedMove: 2
+  serializedVersion: 2
+  m_Size: {x: 2.469945, y: 2.8876812, z: 7.0502033}
+  m_Center: {x: -0.019813212, y: 1.4729105, z: -0.3618814}
