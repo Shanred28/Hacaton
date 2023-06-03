@@ -9,12 +9,13 @@ namespace Hacaton
         [SerializeField] private float _gravity;
         [SerializeField] private float _Up;
         [SerializeField] private float _prowl;
-
-        [SerializeField] private Collider _collider;
-
+        [SerializeField] private float _smoothFlyFactor;
 
         private Rigidbody _rigidbody;
-        private bool IsCrashed = false;
+
+
+        [HideInInspector] public float SideMove;
+        [HideInInspector] public bool Lift;
 
 
         private void Start () 
@@ -24,17 +25,25 @@ namespace Hacaton
 
         private void FixedUpdate()
         {
-            if (IsCrashed == false)
+            //Side move
+            _rigidbody.AddForce(SideMove * _prowl, 0, 0, ForceMode.Impulse);
+
+            // Up-down move
+            if (Lift)
             {
-                _rigidbody.velocity = transform.forward * _flySpeed;
+                _rigidbody.AddForce(0, _Up, 0, ForceMode.Impulse);
+            }
+            else 
+            {
                 _rigidbody.AddForce(0, -_gravity, 0, ForceMode.Impulse);
             }
 
-            if (IsCrashed == true) 
-            {
-                _rigidbody.AddRelativeForce(-transform.forward * 10000);
-                IsCrashed=false;
-            }
+            // Forward Movement
+            Vector3 _currentVelocity = _rigidbody.velocity;
+            Vector3  forwardVelocity = transform.forward * _flySpeed;
+            _rigidbody.velocity = Vector3.Lerp(_currentVelocity, forwardVelocity, Time.deltaTime * _smoothFlyFactor);
+
+
         }
 
         public void ControllMoveDronUp()
@@ -57,7 +66,6 @@ namespace Hacaton
 
         public void Crashed()
         {
-            IsCrashed = true;
             // Надо сюда анимаху,после столкновения с препятствием
         }
     }

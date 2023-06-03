@@ -17,19 +17,21 @@ namespace Hacaton
 
         private void Control()
         {
-            if (_UpButton.IsHold == true)
-            { 
-                _dron.ControllMoveDronUp();
-            }
+            _dron.Lift = _UpButton.IsHold;
 
             if (_LeftButton.IsHold == true)
             { 
-                _dron.ControllMoveDronProwl(-1);
+                _dron.SideMove = -1;
             }
 
-            if (_RightButton.IsHold == true)
+            else if (_RightButton.IsHold == true)
             {
-                _dron.ControllMoveDronProwl(1);
+                _dron.SideMove = 1;
+            }
+
+            else
+            {
+                _dron.SideMove = 0;
             }
         }
     }
