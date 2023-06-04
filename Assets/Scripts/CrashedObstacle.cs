@@ -14,6 +14,7 @@ namespace Hacaton
                 var rb =dron.GetComponent<Rigidbody>();
                 var collisionNormal = collision.contacts[0].normal;
                 rb.AddForce(collisionNormal * _collisionForce, ForceMode.Impulse);
+                dron.Crashed(_collisionForce);
             }
         }
     }

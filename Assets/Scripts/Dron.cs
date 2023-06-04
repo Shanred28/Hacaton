@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Hacaton
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Dron : MonoBehaviour
     {
-        [SerializeField] private float _flySpeed;
-        [SerializeField] private float _gravity;
+        [Header("StatDron")]
+        // Нужна будет для ускорение и взлома
+        [SerializeField] private float _maxEnergy;
         [SerializeField] private float _Up;
+        [SerializeField] private float _flySpeed;
         [SerializeField] private float _prowl;
+
+        [Header("PhisicFly")]
+        [SerializeField] private float _gravity;
         [SerializeField] private float _smoothFlyFactor;
 
         private Rigidbody _rigidbody;
@@ -17,7 +23,9 @@ namespace Hacaton
         [HideInInspector] public float SideMove;
         [HideInInspector] public bool Lift;
 
+        [HideInInspector] public UnityEvent CrashedEvent;
 
+        [HideInInspector] public float ForceCrashed;
         private void Start () 
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -64,8 +72,10 @@ namespace Hacaton
             
         }
 
-        public void Crashed()
+        public void Crashed(float forceCrashed)
         {
+            ForceCrashed = forceCrashed;
+            CrashedEvent.Invoke();
             // Надо сюда анимаху,после столкновения с препятствием
         }
     }
