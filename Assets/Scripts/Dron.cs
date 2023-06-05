@@ -34,7 +34,8 @@ namespace Hacaton
         private void FixedUpdate()
         {
             //Side move
-            _rigidbody.AddForce(SideMove * _prowl, 0, 0, ForceMode.Impulse);
+           // _rigidbody.AddForce(SideMove * _prowl, 0, 0, ForceMode.Impulse);
+            _rigidbody.AddForce(transform.right * SideMove * _prowl, ForceMode.Impulse);
 
             // Up-down move
             if (Lift)
@@ -54,21 +55,11 @@ namespace Hacaton
 
         }
 
-        public void ControllMoveDronUp()
-        {
-            _rigidbody.AddForce(0, _Up, 0, ForceMode.Impulse);
-
-        }
-
-        public void ControllMoveDronProwl(int prowl)
-        {
-            _rigidbody.AddRelativeForce( _prowl * prowl, 0, 0, ForceMode.Impulse);
-        }
-
         public void TurningDron(float turning)
         { 
             var rotation = Quaternion.Euler(0, turning, 0);
            transform.rotation = rotation;
+           _rigidbody.MoveRotation(rotation);
             
         }
 
