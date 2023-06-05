@@ -78,6 +78,8 @@ namespace Hacaton
             CrashedEvent.Invoke();
             // Надо сюда анимаху,после столкновения с препятствием
         }
+
+
     }
 }
 
