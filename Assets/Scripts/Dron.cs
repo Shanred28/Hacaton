@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SocialPlatforms;
 
 namespace Hacaton
 {
@@ -18,6 +19,7 @@ namespace Hacaton
         [SerializeField] private float _smoothFlyFactor;
 
         private Rigidbody _rigidbody;
+        private Animator _animator;
 
 
         [HideInInspector] public float SideMove;
@@ -26,16 +28,37 @@ namespace Hacaton
         [HideInInspector] public UnityEvent CrashedEvent;
 
         [HideInInspector] public float ForceCrashed;
+
+        private float _defoultSlopeCentr = 0.50f;
+        private float timeSlopeLeft = 0.50f;
+        private float timeSlopeRight = 0.50f;
         private void Start () 
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
+            _animator.SetFloat("Blend", _defoultSlopeCentr);
         }
 
         private void FixedUpdate()
         {
             //Side move
-           // _rigidbody.AddForce(SideMove * _prowl, 0, 0, ForceMode.Impulse);
             _rigidbody.AddForce(transform.right * SideMove * _prowl, ForceMode.Impulse);
+            if (SideMove > 0)
+            {
+                timeSlopeRight +=  0.01f;
+                AnimationSlope(timeSlopeRight);
+            }
+            if (SideMove < 0)
+            {
+                timeSlopeLeft -= 0.01f;
+                AnimationSlope(timeSlopeLeft);
+            }
+            if (SideMove == 0)
+            {
+                AnimationSlope(_defoultSlopeCentr);
+                timeSlopeRight = _defoultSlopeCentr;
+                timeSlopeLeft = _defoultSlopeCentr;
+            }
 
             // Up-down move
             if (Lift)
@@ -67,6 +90,12 @@ namespace Hacaton
             ForceCrashed = forceCrashed;
             CrashedEvent.Invoke();
             // Надо сюда анимаху,после столкновения с препятствием
+        }
+
+        private void AnimationSlope(float timeSlope)
+        {
+            _animator.SetFloat("Blend", timeSlope);
+            
         }
 
 
