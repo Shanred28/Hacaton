@@ -59,7 +59,6 @@ namespace Hacaton
         { 
             var rotation = Quaternion.Euler(0, turning, 0);
            transform.rotation = rotation;
-           _rigidbody.MoveRotation(rotation);
             
         }
 
