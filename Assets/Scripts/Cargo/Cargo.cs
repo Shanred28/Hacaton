@@ -1,15 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Hacaton
 {
-    [Serializable]
-    public class DamageCargo
-    { 
-        
-    }
-
 
     public class Cargo : MonoBehaviour
     {
@@ -70,7 +63,6 @@ namespace Hacaton
 
             _currentCargoIntegrity -= _damageCargo + _dron.ForceCrashed;
             ChangeCargoIntegrityEvent?.Invoke();
-            Debug.Log(_currentCargoIntegrity);
 
             if (_currentCargoIntegrity <= 0)
                 DestroyedCargo();

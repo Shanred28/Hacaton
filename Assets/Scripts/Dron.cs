@@ -73,7 +73,7 @@ namespace Hacaton
             // Forward Movement
             Vector3 _currentVelocity = _rigidbody.velocity;
             Vector3  forwardVelocity = transform.forward * _flySpeed;
-            _rigidbody.velocity = Vector3.Lerp(_currentVelocity, forwardVelocity, Time.deltaTime * _smoothFlyFactor);
+            _rigidbody.velocity = Vector3.Lerp(_currentVelocity, forwardVelocity, Time.fixedDeltaTime * _smoothFlyFactor);
 
 
         }
