@@ -16,7 +16,6 @@ namespace Hacaton
             {
                 IsGameWin = true;
                 GameResult();
-                Debug.Log("Триггер сработал");
                 // Start mini game "Hack"
             }
         }

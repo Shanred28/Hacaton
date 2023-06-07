@@ -38,9 +38,8 @@ namespace Hacaton
             int rndPrefVehicle = Random.Range(0, _prefabVechicles.Length);
             int rndTargetPoint = Random.Range(0, _spawnPlace.Length);
             Vector3 pos = _targetMove[rndTargetPoint].position - _spawnPlace[rndTargetPoint].position;
-            Vehicles car = Instantiate(_prefabVechicles[rndPrefVehicle], _spawnPlace[rndTargetPoint].position, Quaternion.LookRotation(pos));          
-            Debug.Log(_listVehicles.Count);
-
+            Vehicles car = Instantiate(_prefabVechicles[rndPrefVehicle], _spawnPlace[rndTargetPoint].position, Quaternion.LookRotation(pos));
+            
             car.SetMoveTarget(_targetMove[rndTargetPoint]);
             car.SetPerent(this);
             _timeIntervalSpawnTimer.Restart();
