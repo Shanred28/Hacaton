@@ -15,7 +15,7 @@ namespace Hacaton
         [SerializeField] private float _prowl;
 
         [Header("PhisicFly")]
-        [SerializeField] private float _gravity;
+        //[SerializeField] private float _gravity;
         [SerializeField] private float _smoothFlyFactor;
 
         private Rigidbody _rigidbody;
@@ -23,7 +23,8 @@ namespace Hacaton
 
 
         [HideInInspector] public float SideMove;
-        [HideInInspector] public bool Lift;
+        [HideInInspector] public bool LiftUp;
+        [HideInInspector] public bool LiftDown;
 
         [HideInInspector] public UnityEvent CrashedEvent;
 
@@ -61,13 +62,13 @@ namespace Hacaton
             }
 
             // Up-down move
-            if (Lift)
+            if (LiftUp)
             {
                 _rigidbody.AddForce(0, _Up, 0, ForceMode.Impulse);
             }
-            else 
+            if (LiftDown) 
             {
-                _rigidbody.AddForce(0, -_gravity, 0, ForceMode.Impulse);
+                _rigidbody.AddForce(0, -_Up, 0, ForceMode.Impulse);
             }
 
             // Forward Movement
@@ -97,8 +98,6 @@ namespace Hacaton
             _animator.SetFloat("Blend", timeSlope);
             
         }
-
-
     }
 }
 

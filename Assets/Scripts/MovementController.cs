@@ -6,9 +6,10 @@ namespace Hacaton
     {
         [SerializeField] private Dron _dron;
 
-        [SerializeField] private PointerClickHold _UpButton;
-        [SerializeField] private PointerClickHold _LeftButton;
-        [SerializeField] private PointerClickHold _RightButton;
+        [SerializeField] private PointerClickHold _upButton;
+        [SerializeField] private PointerClickHold _leftButton;
+        [SerializeField] private PointerClickHold _rightButton;
+        [SerializeField] private PointerClickHold _downButton;
 
         private void Update()
         {
@@ -17,14 +18,15 @@ namespace Hacaton
 
         private void Control()
         {
-            _dron.Lift = _UpButton.IsHold;
+            _dron.LiftUp = _upButton.IsHold;
+            _dron.LiftDown = _downButton.IsHold;
 
-            if (_LeftButton.IsHold == true)
+            if (_leftButton.IsHold == true)
             { 
                 _dron.SideMove = -1;
             }
 
-            else if (_RightButton.IsHold == true)
+            else if (_rightButton.IsHold == true)
             {
                 _dron.SideMove = 1;
             }

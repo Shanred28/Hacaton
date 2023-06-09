@@ -16,5 +16,5 @@ MonoBehaviour:
   _visualModel: {fileID: 0}
   _Name: 123
   _weight: 0
-  _cargoIntegrity: 1000
+  _cargoIntegrity: 300
   _costCargo: 0

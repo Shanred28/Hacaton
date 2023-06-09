@@ -16,7 +16,6 @@ namespace Hacaton
         public void SetLevelBoundary(float setHight)
         {
             _height = setHight;
-            Debug.Log(_height);
         }
 
         public void SetLevelBoundaryReset()
