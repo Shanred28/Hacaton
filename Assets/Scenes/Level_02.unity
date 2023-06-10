@@ -307,6 +307,31 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
+        type: 3}
+      propertyPath: _maxEnergy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
+        type: 3}
+      propertyPath: _addBoostSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
+        type: 3}
+      propertyPath: _timeBoostSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
+        type: 3}
+      propertyPath: _needEnergyBoostSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
+        type: 3}
+      propertyPath: _countEnergyBoostSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2257446923022157678, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
         type: 3}
       propertyPath: m_Name
@@ -404,6 +429,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 363e04bef949fe14081e40ba4cd366c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1098042394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4739513084861087709, guid: 710b933e34a7e7145be6b39ad1b6be20,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107499430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecfd83a2373e4147908f5a12ab6c0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1107499430
@@ -584,7 +621,7 @@ PrefabInstance:
     - target: {fileID: 6485411704737558331, guid: 213d1febb29785b44bf0f10a7935aeca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -219.3
+      value: -217.83165
       objectReference: {fileID: 0}
     - target: {fileID: 6485411704737558331, guid: 213d1febb29785b44bf0f10a7935aeca,
         type: 3}
@@ -594,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 6485411704737558331, guid: 213d1febb29785b44bf0f10a7935aeca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -124.8
+      value: -121.454346
       objectReference: {fileID: 0}
     - target: {fileID: 6485411704737558331, guid: 213d1febb29785b44bf0f10a7935aeca,
         type: 3}
@@ -710,6 +747,11 @@ PrefabInstance:
       propertyPath: _upButton
       value: 
       objectReference: {fileID: 2005181866}
+    - target: {fileID: 6296360381930173922, guid: 98addea22518d4142a93f8ad2ee6023e,
+        type: 3}
+      propertyPath: _boostSpeed
+      value: 
+      objectReference: {fileID: 1098042394}
     - target: {fileID: 6296360381930173922, guid: 98addea22518d4142a93f8ad2ee6023e,
         type: 3}
       propertyPath: _downButton

@@ -10,6 +10,7 @@ namespace Hacaton
         [SerializeField] private PointerClickHold _leftButton;
         [SerializeField] private PointerClickHold _rightButton;
         [SerializeField] private PointerClickHold _downButton;
+        [SerializeField] private PointerClickHold _boostSpeed;
 
         private void Update()
         {
@@ -35,6 +36,9 @@ namespace Hacaton
             {
                 _dron.SideMove = 0;
             }
+
+            if (_boostSpeed.IsHold)
+                _dron.BoostSpeed();
         }
     }
 }
