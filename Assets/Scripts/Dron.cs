@@ -9,7 +9,9 @@ namespace Hacaton
         [Header("StatDron")]
         // Нужна будет для ускорение и взлома
         [SerializeField] private float _maxEnergy;
-        private float _currentEneergy;
+        public float MaxEnergy => _maxEnergy;
+        private float _currentEnergy;
+        public float CurrentEnergy => _currentEnergy;
         [SerializeField] private float _Up;
         [SerializeField] private float _flySpeed;
         
@@ -51,7 +53,7 @@ namespace Hacaton
             _rigidbody = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
             _animator.SetFloat("Blend", _defoultSlopeCentr);
-            _currentEneergy = _maxEnergy;
+            _currentEnergy = _maxEnergy;
             InitTimers();
         }
 
@@ -126,7 +128,7 @@ namespace Hacaton
 
         public void BoostSpeed()
         {
-            if (_currentEneergy >= _countEnergyBoostSpeed && _IsBoostSpeed == false)
+            if (_currentEnergy >= _countEnergyBoostSpeed && _IsBoostSpeed == false)
             {
                 _flySpeed = _flySpeed * _addBoostSpeed;
                 _timerBoostSpeed.Start(_timeBoostSpeed);
@@ -143,6 +145,7 @@ namespace Hacaton
         private void InitTimers()
         {
             _timerBoostSpeed = new Timer(_timeBoostSpeed);
+            _timerBoostSpeed.Stop();
         }
 
         private void UpdateTimers()
@@ -152,7 +155,7 @@ namespace Hacaton
 
         private void RemoveEnergy()
         {
-            _currentEneergy = _currentEneergy - _countEnergyBoostSpeed;
+            _currentEnergy = _currentEnergy - _countEnergyBoostSpeed;
         }
     }
 }
