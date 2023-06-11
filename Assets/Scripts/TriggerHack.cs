@@ -7,7 +7,7 @@ namespace Hacaton
     {
         [SerializeField] private Image _imageSuccessfullHack;
         [SerializeField] private MoveTo _moveTo;
-        [SerializeField] private GameObject _gameObject;
+        [SerializeField] private GameObject _convasMiniGame;
 
         public bool IsGameWin;
 
@@ -15,7 +15,7 @@ namespace Hacaton
         {
             if (other.transform.root.TryGetComponent<Dron>(out Dron dron))
             {
-                _gameObject.SetActive(true);
+                _convasMiniGame.SetActive(true);
                 Time.timeScale = 0;
             }
         }
@@ -25,6 +25,7 @@ namespace Hacaton
             if (other.transform.root.TryGetComponent<Dron>(out Dron dron))
             {
                 _imageSuccessfullHack.gameObject.SetActive(false);
+                dron.Hack();
             }
         }
 
@@ -34,8 +35,8 @@ namespace Hacaton
                 _imageSuccessfullHack.gameObject.SetActive(true);
                 _moveTo.IsStart = true;
 
-                Time.timeScale = 1f;
-                _gameObject.SetActive(false);
+                 Time.timeScale = 1f;
+                _convasMiniGame.SetActive(false);
             
                
         }

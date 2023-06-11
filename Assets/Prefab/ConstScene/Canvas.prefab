@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _imageFilledHP: {fileID: 2186391606192893521}
+  _imageFilledEnergy: {fileID: 1060023538}
+  _dron: {fileID: 0}
   _cargo: {fileID: 0}
   _textCountBoxMail: {fileID: 2186391605546026457}
 --- !u!1 &2186391604655718917

@@ -40,7 +40,6 @@ namespace Hacaton
             if (numCompleted == _conditions.Length)
             {
                 _isWin = true;
-                Debug.Log("Win");
                 triggerHack.GameResult();
             }
 

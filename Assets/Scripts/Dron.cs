@@ -12,6 +12,7 @@ namespace Hacaton
         public float MaxEnergy => _maxEnergy;
         private float _currentEnergy;
         public float CurrentEnergy => _currentEnergy;
+        [SerializeField] private int _removeEnergyHack;
         [SerializeField] private float _Up;
         [SerializeField] private float _flySpeed;
         
@@ -133,7 +134,7 @@ namespace Hacaton
                 _flySpeed = _flySpeed * _addBoostSpeed;
                 _timerBoostSpeed.Start(_timeBoostSpeed);
                 _IsBoostSpeed = true;
-                RemoveEnergy();
+                RemoveEnergy(_countEnergyBoostSpeed);
             }           
         }
         private void NormalSpeed()
@@ -153,9 +154,21 @@ namespace Hacaton
             _timerBoostSpeed.RemoveTime(Time.deltaTime);
         }
 
-        private void RemoveEnergy()
+        private void RemoveEnergy(int energy)
         {
-            _currentEnergy = _currentEnergy - _countEnergyBoostSpeed;
+            _currentEnergy = _currentEnergy - energy;
+        }
+
+        public void AddEnergy(int energy)
+        {
+            _currentEnergy += energy;
+            if(_currentEnergy > _maxEnergy)
+                _currentEnergy = _maxEnergy;
+        }
+
+        public void Hack()
+        {
+            RemoveEnergy(_removeEnergyHack);
         }
     }
 }

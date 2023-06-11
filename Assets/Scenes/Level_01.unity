@@ -10585,6 +10585,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2186391604298147180, guid: 710b933e34a7e7145be6b39ad1b6be20,
         type: 3}
+      propertyPath: _dron
+      value: 
+      objectReference: {fileID: 1732967178}
+    - target: {fileID: 2186391604298147180, guid: 710b933e34a7e7145be6b39ad1b6be20,
+        type: 3}
       propertyPath: _cargo
       value: 
       objectReference: {fileID: 1297514439}
@@ -10859,6 +10864,11 @@ PrefabInstance:
     - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
         type: 3}
       propertyPath: _timeBoostSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
+        type: 3}
+      propertyPath: _removeEnergyHack
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2257446923022157667, guid: ec98f5223a93aa5499c27e7f8cf8b78c,
@@ -11190,6 +11200,11 @@ PrefabInstance:
     - target: {fileID: 8406210118128985418, guid: 7b940b3d8606f3442986cf3d4814ffa3,
         type: 3}
       propertyPath: _gameObject
+      value: 
+      objectReference: {fileID: 712512332}
+    - target: {fileID: 8406210118128985418, guid: 7b940b3d8606f3442986cf3d4814ffa3,
+        type: 3}
+      propertyPath: _convasMiniGame
       value: 
       objectReference: {fileID: 712512332}
     - target: {fileID: 8406210118128985418, guid: 7b940b3d8606f3442986cf3d4814ffa3,

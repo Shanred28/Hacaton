@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2257446922718292909}
   m_LocalRotation: {x: -0, y: -0.000000014901159, z: -0, w: 1}
-  m_LocalPosition: {x: 0.71508765, y: 3.2129974, z: 8.74469}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -126,7 +126,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2257446923022157678}
-  m_LocalRotation: {x: -0, y: 0.000000014901159, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7150879, y: -3.2129974, z: -8.74469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -164,11 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363e04bef949fe14081e40ba4cd366c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEnergy: 0
+  _maxEnergy: 100
   _Up: 0.4
   _flySpeed: 6
   _prowl: 0.18
   _smoothFlyFactor: 1.5
+  _addBoostSpeed: 10
+  _countEnergyBoostSpeed: 30
+  _timeBoostSpeed: 10
   SideMove: 0
   LiftUp: 0
   LiftDown: 0
