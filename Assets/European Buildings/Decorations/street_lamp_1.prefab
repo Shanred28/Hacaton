@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3322986}
   - component: {fileID: 2380588}
   - component: {fileID: 6417348}
+  - component: {fileID: 5015425008502034823}
   m_Layer: 0
   m_Name: street_lamp_1
   m_TagString: Untagged
@@ -91,10 +92,23 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122172}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 117292b56a6777b409eb690071cb76a2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 739036cec282eb7438e8bcc5e60a50f2, type: 3}
+--- !u!114 &5015425008502034823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bcd4934472deb48819fbf7bd7c329f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionForce: 10
