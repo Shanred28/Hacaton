@@ -8,23 +8,26 @@ namespace Hacaton
     {
         public bool LastLevelResult { get; private set; }
 
+        public Episode CurrentEpisode;
+
         public UnityEvent IsLevelFinish;
 
         public void RestartLevel()
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void StartMission()
         {
-
+            SceneManager.LoadScene(CurrentEpisode.Levels[0]);
         }
 
         public void FinishCurrentLevel(bool success)
         {
-           /* LastLevelResult = success;
+            LastLevelResult = success;
             IsLevelFinish.Invoke();
-            CalculateLevelStatistic();
-            ResultPanelController.Instance.ShowResults(LevelStatistics, success);*/
+            //CalculateLevelStatistic();
+            //ResultPanelController.Instance.ShowResults(LevelStatistics, success);
 
         }
 
@@ -55,6 +58,7 @@ namespace Hacaton
 
             LevelStatistics.numkills = Player.Instance.NumKills;
             LevelStatistics.time = (int)LevelController.Instance.LevelTime;*/
+           //
         }
     }
 }
