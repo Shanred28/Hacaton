@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace Hacaton
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Dron : MonoBehaviour
+    public class Dron : SingletonBase<Dron>
     {
         [Header("StatDron")]
         // Нужна будет для ускорение и взлома
