@@ -138,6 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8150186337200829917}
+  - component: {fileID: 7966007292935611870}
   - component: {fileID: 8150186337200829916}
   m_Layer: 0
   m_Name: Chunk_01
@@ -170,6 +171,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7966007292935611870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150186337200829914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8113513, y: 1.876221, z: 4.0322447}
+  m_Center: {x: 1.4661803, y: 0.9072772, z: -0.015091896}
 --- !u!114 &8150186337200829916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beginChunk: {fileID: 8150186337291038011}
-  endChunk: {fileID: 8150186337046865611}
+  endChunks:
+  - {fileID: 8150186337046865611}
+  typeRoad: 0
+  turningCross: 0
 --- !u!1 &8150186337291038008
 GameObject:
   m_ObjectHideFlags: 0

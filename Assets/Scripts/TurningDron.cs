@@ -14,7 +14,7 @@ namespace Hacaton
     {
       
 
-        [SerializeField] private Turning turning;
+        [SerializeField] public Turning turning;
         
         [SerializeField] private bool _isSetHight = false;
         [SerializeField] private float _hight;
@@ -37,13 +37,13 @@ namespace Hacaton
                 
                 if (turning == Turning.Right)
                 {
-                    dron.TurningDron(0);
+                    dron.TurningDron(+90);
                     IsTurn = true;
                 }        
                 
                 if (turning == Turning.Forward)
                 {
-                    dron.TurningDron(0);
+                    //dron.TurningDron(0);
                 }
 
                 

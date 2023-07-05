@@ -109,8 +109,9 @@ namespace Hacaton
 
         public void TurningDron(float turning)
         { 
-            var rotation = Quaternion.Euler(0, turning, 0);
+            var rotation = Quaternion.Euler(0, transform.rotation.y - turning, 0);
            transform.rotation = rotation;
+            Debug.Log(rotation);
             
         }
 

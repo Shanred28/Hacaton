@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4939712913073107112}
   - component: {fileID: 3421080686966919624}
+  - component: {fileID: 3932078522975843621}
   m_Layer: 0
   m_Name: Chunk_First
   m_TagString: Untagged
@@ -78,7 +79,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beginChunk: {fileID: 1006412307084209230}
-  endChunk: {fileID: 8675146871645271235}
+  endChunks:
+  - {fileID: 8675146871645271235}
+  typeRoad: 0
+  turningCross: 0
+--- !u!65 &3932078522975843621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711843988281677232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39389777, y: 2.2946427, z: 3.57846}
+  m_Center: {x: 1.6084126, y: 1.157242, z: 0.3035127}
 --- !u!1 &8731328525078164021
 GameObject:
   m_ObjectHideFlags: 0

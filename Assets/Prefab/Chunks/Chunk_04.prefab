@@ -138,7 +138,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 948532626548086938}
+  - component: {fileID: 8508783754936648154}
   - component: {fileID: 948532626548086937}
+  - component: {fileID: 5243407175983378315}
   m_Layer: 0
   m_Name: Chunk_04
   m_TagString: Untagged
@@ -163,9 +165,24 @@ Transform:
   - {fileID: 948532626210039731}
   - {fileID: 1059333159661091364}
   - {fileID: 948532626124781135}
+  - {fileID: 4625246520646740652}
+  - {fileID: 9064667588394187258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8508783754936648154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948532626548086939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.073937, y: 1.7422053, z: 2.1085818}
+  m_Center: {x: 0.003548324, y: 0.9591611, z: -0.033610463}
 --- !u!114 &948532626548086937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +196,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beginChunk: {fileID: 948532626650866300}
-  endChunk: {fileID: 948532626210039731}
+  endChunks:
+  - {fileID: 948532626210039731}
+  - {fileID: 4625246520646740652}
+  - {fileID: 9064667588394187258}
+  typeRoad: 1
+  turningCross: 0
+--- !u!114 &5243407175983378315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948532626548086939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee1172e7f20c2a4cabedc28f36b66ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turning: 0
+  _isSetHight: 0
+  _hight: 0
 --- !u!1 &948532626650866301
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +262,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beginChunk: {fileID: 0}
-  endChunk: {fileID: 0}
+  endChunks: []
+  typeRoad: 0
+  turningCross: 0
+--- !u!1 &4050776018717566998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9064667588394187258}
+  m_Layer: 0
+  m_Name: End_ChankRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9064667588394187258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4050776018717566998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948532626548086938}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6170779644076005236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4625246520646740652}
+  m_Layer: 0
+  m_Name: End_ChankLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4625246520646740652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170779644076005236}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948532626548086938}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &948532624937627639
 PrefabInstance:
   m_ObjectHideFlags: 0
