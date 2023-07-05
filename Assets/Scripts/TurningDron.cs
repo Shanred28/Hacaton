@@ -30,14 +30,13 @@ namespace Hacaton
                     LevelBoundary.Instance.SetLevelBoundary(_hight);
                 if (turning == Turning.Left && IsTurn == false)
                 {
-                   dron.TurningDron(-90);
+                    dron.TurningDron(90);
                     IsTurn = true;
-
                 }           
                 
                 if (turning == Turning.Right)
                 {
-                    dron.TurningDron(+90);
+                    dron.TurningDron(-90);
                     IsTurn = true;
                 }        
                 

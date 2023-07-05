@@ -9,7 +9,7 @@ namespace Hacaton
         [SerializeField] private Chunk[] _chunkPrefabs;
         [SerializeField] private Chunk _firstChunk;
 
-        private Quaternion _rotationChunk;
+        private Vector3 _rotationChunk;
 
         private Vector3 _popravka;
 
@@ -52,24 +52,58 @@ namespace Hacaton
                 switch (turning)
                 {
                     case Turning.Left:
-                        _rotationChunk = Quaternion.Euler(0, -90, 0);
+                        //_rotationChunk = Quaternion.Euler(0, -90, 0);
+                        var angle1 = new Vector3(0, -90, 0);
+                        _rotationChunk += angle1;
+                        if (_rotationChunk.y == 180 || _rotationChunk.y == -180)
+                        {
+                            _popravka = new Vector3(-4, 0, 0);
+                        }
+                        else if (_rotationChunk.y == -90)
+                        {
+                            _popravka = new Vector3(-2, 0, 2);
+                        }
+                        else if (_rotationChunk.y == 90)
+                        {
+                            _popravka = new Vector3(-2, 0, -2);
+                        }
+                        else
+                            _popravka = new Vector3(4, 0, 0);
+                        newChunk.transform.eulerAngles = _rotationChunk;
+                        SetPlace(newChunk, endChunk);
+                        //newChunk.transform.position = endChunk.position - newChunk.beginChunk.localPosition + new Vector3(-2, 0, 2);
+                        // newChunk.transform.rotation = _rotationChunk;
+                        //newChunk.transform.eulerAngles += _rotationChunk;
 
-                        newChunk.transform.position = endChunk.position - newChunk.beginChunk.localPosition + new Vector3(-2, 0, 2);
-                        newChunk.transform.rotation = _rotationChunk;
-                        _popravka = new Vector3(-2, 0, 2);
                         break;
 
                     case Turning.Right:
-                        _rotationChunk = Quaternion.Euler(0, 90, 0);
+                        var angle2 = new Vector3(0, 90, 0);
+                        _rotationChunk += angle2;
+                        if (_rotationChunk.y == 180 || _rotationChunk.y == -180)
+                        {
+                            _popravka = new Vector3(-4, 0, 0);
+                        }
+                        else if (_rotationChunk.y == -90)
+                        {
+                            _popravka = new Vector3(0, 0, -4);
+                        }
+                        else if (_rotationChunk.y == 90)
+                        {
+                            _popravka = new Vector3(-2, 0, -2);
+                        }
+                        else
+                            _popravka = new Vector3(-2, 0, -2);
+                        newChunk.transform.eulerAngles = _rotationChunk;
+                        SetPlace(newChunk, endChunk);
+                        //newChunk.transform.position = endChunk.position - newChunk.beginChunk.localPosition + new Vector3(-2, 0, -2);
+                      
                         
-                        newChunk.transform.position = endChunk.position - newChunk.beginChunk.localPosition + new Vector3(-2, 0, -2);
-                        newChunk.transform.rotation = _rotationChunk;
-                        _popravka = new Vector3(-2, 0, -2);
 
                         break;
 
                     case Turning.Forward:
-                        SetPlace(newChunk, lastChunk);
+                        SetPlace(newChunk, lastChunk.endChunks[0]);
 /*                        newChunk.transform.rotation = _rotationChunk;
                         newChunk.transform.position = lastChunk.endChunks[0].position - newChunk.beginChunk.localPosition;*/
                         break;
@@ -94,7 +128,8 @@ namespace Hacaton
             }
             else
             {
-                SetPlace(newChunk, lastChunk);
+                var endPoit = lastChunk.endChunks[0];
+                SetPlace(newChunk, endPoit);
                 /*newChunk.transform.rotation = _rotationChunk;
                 newChunk.transform.position = lastChunk.endChunks[0].position - newChunk.beginChunk.localPosition;*/
             }
@@ -113,10 +148,25 @@ namespace Hacaton
           
         }
 
-        private void SetPlace(Chunk chunk, Chunk lastChunk)
+        private void SetPlace(Chunk newChunk, Transform endPoit)
         {
-            chunk.transform.rotation = _rotationChunk;
-            chunk.transform.position = lastChunk.endChunks[0].position - chunk.beginChunk.localPosition + _popravka;
+            Debug.Log(_rotationChunk);
+            //newChunk.transform.eulerAngles = _rotationChunk;
+            if (_rotationChunk != new Vector3(0, 0, 0))
+            {
+                newChunk.transform.eulerAngles = _rotationChunk;
+                newChunk.transform.position = endPoit.position - newChunk.beginChunk.localPosition + _popravka;
+                
+            }
+            else
+            {
+                newChunk.transform.eulerAngles = _rotationChunk;
+                newChunk.transform.position = endPoit.position - newChunk.beginChunk.localPosition;
+                
+            }
+           
+                
+
         }
 
         private void SetTurning()
