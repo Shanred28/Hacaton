@@ -55,7 +55,11 @@ namespace Hacaton
                         //_rotationChunk = Quaternion.Euler(0, -90, 0);
                         var angle1 = new Vector3(0, -90, 0);
                         _rotationChunk += angle1;
-                        if (_rotationChunk.y == 180 || _rotationChunk.y == -180)
+                        if (_rotationChunk.y == 180)
+                        {
+                            _popravka = new Vector3(-4, 0, 0);
+                        }
+                        else if (_rotationChunk.y == -180)
                         {
                             _popravka = new Vector3(-4, 0, 0);
                         }
@@ -80,7 +84,15 @@ namespace Hacaton
                     case Turning.Right:
                         var angle2 = new Vector3(0, 90, 0);
                         _rotationChunk += angle2;
-                        if (_rotationChunk.y == 180 || _rotationChunk.y == -180)
+                        if (_rotationChunk.y == 270)
+                        {
+                            _popravka = new Vector3(-2, 0, 2);
+                        }
+                        else if (_rotationChunk.y == 180)
+                        {
+                            _popravka = new Vector3(-4, 0, 0);
+                        }
+                        else if (_rotationChunk.y == -180)
                         {
                             _popravka = new Vector3(-4, 0, 0);
                         }
