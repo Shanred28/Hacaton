@@ -26,10 +26,9 @@ namespace Hacaton
         {
             var rnd = Random.Range(0, endChunks.Length);
             var endPoint = endChunks[rnd];
-            Debug.Log(endPoint);
+;
             turningCross = SetTurning(rnd);
-            Debug.Log(rnd);
-            Debug.Log(turningCross);
+
             return endPoint;
         }
 
