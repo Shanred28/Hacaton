@@ -7,20 +7,17 @@ namespace Hacaton
     {
         private Transform _dronPosition;
         [SerializeField] private Chunk[] _chunkPrefabs;
-        [SerializeField] private Chunk _chunkCrossPref;
+        [SerializeField] private Chunk[] _chunkCrossPref;
         [SerializeField] private Chunk _firstChunk;
         [SerializeField] private int _chunkRoad;
+        [SerializeField] private Chunk[] _roadTurn;
 
         [SerializeField] private Transform _orentir;
 
         private int _chunkNumSpawn;
 
-        private Vector3 _rotationChunk;
-
-        private Vector3 _popravka;
-        private Vector3 angle;
-
         private List<Chunk>  _spawnedChunks = new List<Chunk>();
+        private List<Chunk> _spawnedStopChunks = new List<Chunk>();
 
 
         private void Start () 
@@ -28,7 +25,7 @@ namespace Hacaton
             _dronPosition = Dron.Instance.transform;
             Chunk newFirstChunk = Instantiate(_firstChunk);
             _spawnedChunks.Add(newFirstChunk);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
                 SpawnChunk();
             }
@@ -36,19 +33,24 @@ namespace Hacaton
         }
 
 
-       /* private void Update () 
-        {
-            if (_dronPosition.position.x > _spawnedChunks[_spawnedChunks.Count - 1].endChunks[0].position.x - 25)
+         private void Update () 
+         {
+
+            if (_spawnedStopChunks.Count >= 12)
+            {
+                Destroy(_spawnedStopChunks[0].gameObject);
+                _spawnedStopChunks.RemoveAt(0);
+            }
+            /*if (_dronPosition.position.x > _spawnedChunks[_spawnedChunks.Count - 1].endChunks[0].position.x - 25)
             {
                 SpawnChunk();
-            }
-        }*/
+            }*/
+        }
 
         public void SpawnChunk()
         {
             if (_chunkRoad >= _chunkNumSpawn)
             {
-                
                 _chunkNumSpawn++;
 
                 var lastChunk = _spawnedChunks[_spawnedChunks.Count - 1];
@@ -56,134 +58,121 @@ namespace Hacaton
                 if (lastChunk.typeRoad == TypeRoad.Crossroad)
                 {
                     var endChunk = lastChunk.RandomTurning();
-                    Debug.Log(endChunk);
                     var turning = lastChunk.turningCross;
-                    Chunk newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Length)], endChunk.transform.position, endChunk.rotation);
-                    _spawnedChunks.Add(newChunk);
+                    SetPlace(endChunk);
+
                     lastChunk.GetComponent<TurningDron>().turning = turning;
-                    /*switch (turning)
+                    switch (turning)
                     {
                         case Turning.Left:
-                            var angle1 = new Vector3(0, 0, 0);
-                            _rotationChunk += angle1;
 
-                            angle = new Vector3(0, -90, 0);
-
-                            newChunk.transform.position = endChunk.transform.position;
-                           // newChunk.transform.eulerAngles += endChunk.transform.localEulerAngles;
-                            var dist = Vector3.Distance(newChunk.beginChunk.transform.position, endChunk.transform.position);
-                          *//*  if (dist > 1)
-                            {
-                                newChunk.transform.eulerAngles = endChunk.transform.localEulerAngles + angle;
-                                Debug.Log(dist > 1);
-                            }*//*
-                                
-                            // newChunk.transform.eulerAngles = endChunk.transform.localEulerAngles + angle;
-                            //SetPlace(newChunk, endChunk);
-                            *//* var distLostChunk = Vector3.Distance(new Vector3(endChunk.transform.position.x, 0, 0), lastChunk.beginChunk.transform.position);
-                             var distNewChunk = Vector3.Distance(new Vector3(endChunk.transform.position.x, 0, 0), newChunk.beginChunk.transform.position);
-                             if (distLostChunk < distNewChunk)
-                             {
-                                 newChunk.transform.eulerAngles = new Vector3(0, -90, 0);
-                             }
-                             else if (distLostChunk == distNewChunk)
-                             {
-                                 newChunk.transform.eulerAngles = new Vector3(0, 0, 0);
-                             }
-                             else if (distLostChunk > distNewChunk)
-                                 newChunk.transform.eulerAngles = new Vector3(0, 180, 0);
-                             Debug.Log(distLostChunk );
-                             Debug.Log(distNewChunk) ;*//*
-
+                            SetPlaceStopCross(lastChunk.endChunks[1], lastChunk.endChunks[2]);
                             break;
 
                         case Turning.Right:
-                            var angle2 = new Vector3(0, 90, 0);
-                            _rotationChunk = angle2;
 
-                            angle = new Vector3(0, 90, 0);
-
-                            var offset = newChunk.transform.position - newChunk.beginChunk.position;
-
-                            newChunk.transform.position = endChunk.localPosition;
-
-                           // newChunk.transform.eulerAngles += endChunk.transform.localEulerAngles;
-                            var dist1 = Vector3.Distance(newChunk.beginChunk.transform.position, endChunk.transform.position);
-                          *//*  if (dist1 > 1)
-                            {
-                                Debug.Log(dist1 > 1);
-                                newChunk.transform.eulerAngles = endChunk.transform.localEulerAngles + angle;
-                            }*//*
-                               
-                            // newChunk.transform.eulerAngles = endChunk.transform.localEulerAngles + angle;
-                            *//* var distLostChunkRight = Vector3.Distance(new Vector3(endChunk.transform.position.x, 0, 0), lastChunk.beginChunk.transform.position);
-                             var distNewChunkRight = Vector3.Distance(new Vector3(endChunk.transform.position.x, 0, 0), newChunk.beginChunk.transform.position);
-
-                             Debug.Log(distLostChunkRight);
-                             Debug.Log(distNewChunkRight);
-                             if (distLostChunkRight > distNewChunkRight)
-                             {
-                                 newChunk.transform.eulerAngles = new Vector3(0, 180, 0);
-                             }
-                             else if (distLostChunkRight == distNewChunkRight)
-                             {
-                                 newChunk.transform.eulerAngles = new Vector3(0, 0, 0);
-                             }
-                             else if (distLostChunkRight < distNewChunkRight)
-                                 newChunk.transform.eulerAngles = new Vector3(0, 90, 0);*//*
-
-                            //SetPlace(newChunk, endChunk);
-
+                            SetPlaceStopCross(lastChunk.endChunks[0], lastChunk.endChunks[2]);
 
                             break;
 
                         case Turning.Forward:
-                            newChunk.transform.rotation = lastChunk.endChunks[0].root.transform.rotation;
-                            newChunk.transform.position = lastChunk.endChunks[0].position - newChunk.beginChunk.position;
+                            SetPlaceStopCross(lastChunk.endChunks[0], lastChunk.endChunks[1]);
+                            break;
+
+                    }
+                }
+                else if (lastChunk.typeRoad == TypeRoad.Turning)
+                {
+                    var endChunk = lastChunk.RandomTurning();
+                    var turning1 = lastChunk.turningCross;
+                    SetPlace(endChunk);
+
+                    lastChunk.GetComponent<TurningDron>().turning = turning1;
+
+                    switch (turning1)
+                    {
+                        case Turning.Left:
+                            SetPlaceStopAngleT(lastChunk.endChunks[1]);
 
                             break;
 
-                    }*/
+                        case Turning.Right:
+
+                            SetPlaceStopAngleT(lastChunk.endChunks[0]);
+                            break;
+                    }
                 }
                 else
                 {
                     var endPoit = lastChunk.endChunks[0];
-                    Chunk newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Length)], endPoit.position, endPoit.rotation);
+                    SetPlace(endPoit);
 
-                    /* newChunk.transform.rotation = endPoit.root.transform.rotation;
-                     newChunk.transform.position = endPoit.position - newChunk.beginChunk.position;*/
-                    //SetPlace(newChunk, endPoit);
-                    _spawnedChunks.Add(newChunk);
                 }
             }
 
             if (_chunkRoad == _chunkNumSpawn)
             {
                 _chunkNumSpawn = 0;
-                Chunk newChunk = Instantiate(_chunkCrossPref);
+                Chunk newChunk = Instantiate(_chunkCrossPref[Random.Range(0, _chunkCrossPref.Length)]);
                 var lastChunk = _spawnedChunks[_spawnedChunks.Count - 1];
                 var endPoit = lastChunk.endChunks[0];
+
                 newChunk.transform.rotation = endPoit.root.transform.rotation;
                 newChunk.transform.position = endPoit.position - newChunk.beginChunk.position;
                 _spawnedChunks.Add(newChunk);
             }
-               
 
-            if (_spawnedChunks.Count >= 10)
+            if (_spawnedChunks.Count >= 16)
             {
                 Destroy(_spawnedChunks[0].gameObject);
                 _spawnedChunks.RemoveAt(0);
-            }
+
+            }           
         }
 
-      
-        private void SetPlace(Chunk newChunk, Transform endPoit)
+        private void SetPlaceStopCross(Transform transform,Transform transform1)
         {
-            Debug.Log(_rotationChunk);
-          
-            newChunk.transform.rotation = endPoit.root.transform.rotation;
-            newChunk.transform.position = endPoit.position - newChunk.beginChunk.position;
-            
+            Chunk newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Length)], transform.position, transform.rotation);
+            var offset = newChunk.transform.position - newChunk.beginChunk.transform.position;
+            newChunk.transform.position += offset;
+
+/*            Chunk newChunkEnd1 = Instantiate(_roadTurn[Random.Range(0, _roadTurn.Length)], newChunk.endChunks[0].transform.position, newChunk.endChunks[0].transform.rotation);
+            var offset2 = newChunkEnd1.transform.position - newChunkEnd1.beginChunk.transform.position;
+            newChunkEnd1.transform.position += offset2;*/
+
+            Chunk newChunk1 = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Length)], transform1.position, transform1.rotation);
+            var offset3 = newChunk1.transform.position - newChunk1.beginChunk.transform.position;
+            newChunk1.transform.position += offset3;
+
+            Chunk newChunkEnd21 = Instantiate(_roadTurn[Random.Range(0, _roadTurn.Length)], newChunk1.endChunks[0].transform.position, newChunk1.endChunks[0].transform.rotation);
+            var offset4 = newChunkEnd21.transform.position - newChunkEnd21.beginChunk.transform.position;
+            newChunkEnd21.transform.position += offset4;
+            _spawnedStopChunks.Add(newChunk);
+            _spawnedStopChunks.Add(newChunk1);
+            _spawnedStopChunks.Add(newChunkEnd21);
+
+        }
+
+        private  void SetPlaceStopAngleT(Transform transform)
+        {
+            Chunk newChunk1 = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Length)], transform.position, transform.rotation);
+            var offset3 = newChunk1.transform.position - newChunk1.beginChunk.transform.position;
+            newChunk1.transform.position += offset3;
+
+            Chunk newChunkEnd21 = Instantiate(_roadTurn[Random.Range(0, _roadTurn.Length)], newChunk1.endChunks[0].transform.position, newChunk1.endChunks[0].transform.rotation);
+            var offset4 = newChunkEnd21.transform.position - newChunkEnd21.beginChunk.transform.position;
+            newChunkEnd21.transform.position += offset4;
+            _spawnedStopChunks.Add(newChunk1);
+            _spawnedStopChunks.Add(newChunkEnd21);
+
+        }
+
+        private void SetPlace(Transform transform)
+        {
+            Chunk newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Length)], transform.position, transform.rotation);
+            var offset = newChunk.transform.position - newChunk.beginChunk.transform.position;
+            newChunk.transform.position += offset;
+            _spawnedChunks.Add(newChunk);
         }
 
     }

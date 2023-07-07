@@ -37,13 +37,14 @@ namespace Hacaton
             switch (endPoint)
             { 
                 case 0:
-                    turningCross =  Turning.Forward;
-                    return turningCross;
-                case 1:
                     turningCross = Turning.Left;
                     return turningCross;
+                case 1:
+                    turningCross = Turning.Right;
+                    return turningCross;
                 case 2:
-                    turningCross =  Turning.Right;
+                   
+                    turningCross = Turning.Forward;
                     return turningCross;
             }
             return turningCross;
