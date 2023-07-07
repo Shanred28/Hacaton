@@ -5,14 +5,14 @@ namespace Hacaton
 {
     public class ChunkPlacer : SingletonBase<ChunkPlacer>
     {
-        private Transform _dronPosition;
+
         [SerializeField] private Chunk[] _chunkPrefabs;
         [SerializeField] private Chunk[] _chunkCrossPref;
         [SerializeField] private Chunk _firstChunk;
         [SerializeField] private int _chunkRoad;
         [SerializeField] private Chunk[] _roadTurn;
 
-        [SerializeField] private Transform _orentir;
+
 
         private int _chunkNumSpawn;
 
@@ -22,7 +22,6 @@ namespace Hacaton
 
         private void Start () 
         {
-            _dronPosition = Dron.Instance.transform;
             Chunk newFirstChunk = Instantiate(_firstChunk);
             _spawnedChunks.Add(newFirstChunk);
             for (int i = 0; i < 8; i++)
@@ -41,10 +40,7 @@ namespace Hacaton
                 Destroy(_spawnedStopChunks[0].gameObject);
                 _spawnedStopChunks.RemoveAt(0);
             }
-            /*if (_dronPosition.position.x > _spawnedChunks[_spawnedChunks.Count - 1].endChunks[0].position.x - 25)
-            {
-                SpawnChunk();
-            }*/
+            
         }
 
         public void SpawnChunk()
