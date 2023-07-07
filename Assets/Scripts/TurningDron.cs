@@ -32,13 +32,16 @@ namespace Hacaton
                 {
                     var turnPoin = GetComponent<Chunk>().endChunks[0]; 
                     //dron.TurningDron(90);
-                    dron.TurningDron(90);
+                    //dron.TurningDron(90);
+                    dron.TurningDron(turnPoin, -90);
                     IsTurn = true;
                 }           
                 
                 if (turning == Turning.Right)
                 {
-                    dron.TurningDron(-90);
+                    var turnPoin = GetComponent<Chunk>().endChunks[1];
+                    //dron.TurningDron(-90);
+                    dron.TurningDron(turnPoin,90);
                     IsTurn = true;
                 }        
                 

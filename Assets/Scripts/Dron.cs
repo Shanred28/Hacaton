@@ -43,6 +43,8 @@ namespace Hacaton
 
         private Timer _timerBoostSpeed;
 
+        private bool isRotating = false;
+
         // Изменить этот ужас, на State Mashin
         private float _defoultSlopeCentr = 0.50f;
         private float timeSlopeLeft = 0.50f;
@@ -105,15 +107,43 @@ namespace Hacaton
             Vector3 _currentVelocity = _rigidbody.velocity;
             Vector3  forwardVelocity = transform.forward * _flySpeed;
             _rigidbody.velocity = Vector3.Lerp(_currentVelocity, forwardVelocity, Time.fixedDeltaTime * _smoothFlyFactor);
+
+            if (isRotating)
+            { 
+              float rotationProgress = Mathf.Clamp01((_initialRotation.eulerAngles.y - transform.rotation.eulerAngles.y)/ Time.fixedTime);
+                Debug.Log(_targetRotation);
+                transform.rotation = Quaternion.Slerp(_initialRotation, _targetQuateruion, Time.fixedTime);
+                if (rotationProgress >= 1f)
+                { 
+                    isRotating = false;
+                }
+            }
         }
 
-        public void TurningDron(float turning )
+        private Quaternion _targetQuateruion;
+        private float _targetRotation;
+        private Quaternion _initialRotation;
+        
+        public void TurningDron(/*float turning*/ Transform targetTransform, float angle )
         {
-            var rotation = Quaternion.Euler(0, transform.eulerAngles.y - turning, 0);
-             transform.rotation = rotation;
-            /*var rotation = Quaternion.LookRotation(target - transform.position);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime);*/
+            // var rotation = Quaternion.Euler(0, transform.eulerAngles.y - turning, 0);
+            //transform.rotation = rotation;
+            /*var target = new Vector3(targetTransform.position.x, 0, targetTransform.position.z);
+            var posDron = new Vector3(transform.position.x, 0, transform.position.z); 
+            *//*var rotation = Quaternion.LookRotation(target - posDron);
+            transform.rotation = Quaternion.RotateTowards (transform.rotation, rotation,  _flySpeed * Time.fixedTime);*//*
+            var dir = target - posDron;
+            var rotation = Quaternion.LookRotation(dir);
             
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _flySpeed * Time.fixedTime);*/
+            isRotating = true;
+            _targetRotation = angle; 
+            _initialRotation = targetTransform.rotation;
+            _targetQuateruion = Quaternion.Euler(transform.eulerAngles + new Vector3(0, angle, 0));
+
+
+
+
         }
 
         public void Crashed(float forceCrashed)
