@@ -107,10 +107,12 @@ namespace Hacaton
             _rigidbody.velocity = Vector3.Lerp(_currentVelocity, forwardVelocity, Time.fixedDeltaTime * _smoothFlyFactor);
         }
 
-        public void TurningDron(float turning)
-        { 
+        public void TurningDron(float turning )
+        {
             var rotation = Quaternion.Euler(0, transform.eulerAngles.y - turning, 0);
-           transform.rotation = rotation;
+             transform.rotation = rotation;
+            /*var rotation = Quaternion.LookRotation(target - transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime);*/
             
         }
 

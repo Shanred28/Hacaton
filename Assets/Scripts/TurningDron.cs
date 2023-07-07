@@ -30,6 +30,8 @@ namespace Hacaton
                     LevelBoundary.Instance.SetLevelBoundary(_hight);
                 if (turning == Turning.Left && IsTurn == false)
                 {
+                    var turnPoin = GetComponent<Chunk>().endChunks[0]; 
+                    //dron.TurningDron(90);
                     dron.TurningDron(90);
                     IsTurn = true;
                 }           
