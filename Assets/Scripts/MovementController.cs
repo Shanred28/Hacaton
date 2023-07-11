@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Hacaton
 {
@@ -6,10 +7,10 @@ namespace Hacaton
     {
         [SerializeField] private Dron _dron;
 
-        [SerializeField] private PointerClickHold _upButton;
+        [SerializeField] private Button _upButton;
         [SerializeField] private PointerClickHold _leftButton;
         [SerializeField] private PointerClickHold _rightButton;
-        [SerializeField] private PointerClickHold _downButton;
+        [SerializeField] private Button _downButton;
         [SerializeField] private PointerClickHold _boostSpeed;
 
         private void Update()
@@ -19,8 +20,10 @@ namespace Hacaton
 
         private void Control()
         {
-            _dron.LiftUp = _upButton.IsHold;
-            _dron.LiftDown = _downButton.IsHold;
+            //_dron.LiftUp = _upButton.IsHold;
+            /*if(_upButton)
+            _dron.LiftUp = true;
+            _dron.LiftDown = _downButton.IsHold;*/
 
             if (_leftButton.IsHold == true)
             { 
@@ -39,6 +42,15 @@ namespace Hacaton
 
             if (_boostSpeed.IsHold)
                 _dron.BoostSpeed();
+        }
+
+        public void OnClickUp()
+        {
+            _dron.LiftUp = true;
+        }
+        public void OnClickDown()
+        { 
+            _dron.LiftDown = true;
         }
     }
 }

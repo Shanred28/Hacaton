@@ -35,7 +35,9 @@ namespace Hacaton
 
         [HideInInspector] public float SideMove;
         [HideInInspector] public bool LiftUp;
+        [SerializeField] private float _upSide;
         [HideInInspector] public bool LiftDown;
+        [SerializeField] private float _downSide;
 
         [HideInInspector] public UnityEvent CrashedEvent;
 
@@ -96,11 +98,31 @@ namespace Hacaton
             // Up-down move
             if (LiftUp)
             {
-                _rigidbody.AddForce(0, _Up, 0, ForceMode.Impulse);
+                // _rigidbody.AddForce(0, _Up, 0, ForceMode.Impulse);
+                if (transform.position.y < _upSide && LiftUp == true)
+                {
+                    transform.position += Vector3.up * Time.fixedDeltaTime;
+                    LiftDown = false;
+                }
+                else
+                {
+                    LiftUp = false;
+                }
+
+
             }
             if (LiftDown) 
             {
-                _rigidbody.AddForce(0, -_Up, 0, ForceMode.Impulse);
+                //_rigidbody.AddForce(0, -_Up, 0, ForceMode.Impulse);
+                if (transform.position.y > _downSide && LiftDown == true)
+                {
+                    LiftUp = false;
+                    transform.position += (Vector3.up * -1) * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    LiftDown = false;
+                }
             }
 
             // Forward Movement
@@ -109,20 +131,24 @@ namespace Hacaton
             _rigidbody.velocity = Vector3.Lerp(_currentVelocity, forwardVelocity, Time.fixedDeltaTime * _smoothFlyFactor);
 
             if (isRotating)
-            { 
-              float rotationProgress = Mathf.Clamp01((_initialRotation.eulerAngles.y - transform.rotation.eulerAngles.y)/ Time.fixedTime);
-                Debug.Log(_targetRotation);
-                transform.rotation = Quaternion.Slerp(_initialRotation, _targetQuateruion, Time.fixedTime);
-                if (rotationProgress >= 1f)
+            {
+                //float rotationProgress = Mathf.Clamp01((_initialRotation.eulerAngles.y - transform.rotation.eulerAngles.y )/ Time.fixedTime);
+                //Debug.Log(rotationProgress);
+
+                _rigidbody.rotation = Quaternion.Lerp(transform.rotation, _targetQuateruion, Time.fixedTime);
+
+                /*transform.rotation = Quaternion.Lerp(transform.rotation, _targetQuateruion, Time.fixedTime)*/
+               /* if (rotationProgress >= 1f)
                 { 
                     isRotating = false;
-                }
+                }*/
             }
         }
 
         private Quaternion _targetQuateruion;
         private float _targetRotation;
         private Quaternion _initialRotation;
+
         
         public void TurningDron(/*float turning*/ Transform targetTransform, float angle )
         {
@@ -136,9 +162,10 @@ namespace Hacaton
             var rotation = Quaternion.LookRotation(dir);
             
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _flySpeed * Time.fixedTime);*/
+
             isRotating = true;
-            _targetRotation = angle; 
-            _initialRotation = targetTransform.rotation;
+            _targetRotation = angle;
+            _initialRotation = targetTransform.localRotation;
             _targetQuateruion = Quaternion.Euler(transform.eulerAngles + new Vector3(0, angle, 0));
 
 

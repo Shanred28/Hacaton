@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c016919241082f24f860b25699027e43,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.19783655
+      value: 0.23744342
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c016919241082f24f860b25699027e43,
         type: 3}
@@ -35,12 +35,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c016919241082f24f860b25699027e43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.263
+      value: 0.681
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c016919241082f24f860b25699027e43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.07
+      value: 23.212
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c016919241082f24f860b25699027e43,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c016919241082f24f860b25699027e43,
         type: 3}
       propertyPath: m_Name
-      value: BannerBlock_01
+      value: BannerBlock_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1613724449096905491, guid: c016919241082f24f860b25699027e43,
         type: 3}
