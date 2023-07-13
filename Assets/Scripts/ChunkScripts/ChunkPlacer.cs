@@ -35,7 +35,7 @@ namespace Hacaton
          private void Update () 
          {
 
-            if (_spawnedStopChunks.Count >= 12)
+            if (_spawnedStopChunks.Count >= 10)
             {
                 Destroy(_spawnedStopChunks[0].gameObject);
                 _spawnedStopChunks.RemoveAt(0);
@@ -118,7 +118,7 @@ namespace Hacaton
                 _spawnedChunks.Add(newChunk);
             }
 
-            if (_spawnedChunks.Count >= 16)
+            if (_spawnedChunks.Count >= 10)
             {
                 Destroy(_spawnedChunks[0].gameObject);
                 _spawnedChunks.RemoveAt(0);
