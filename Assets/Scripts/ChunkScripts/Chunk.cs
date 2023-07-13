@@ -17,7 +17,7 @@ namespace Hacaton
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.root.TryGetComponent<Dron>(out var dron))
+            if (ChunkPlacer.Instance  != null && other.transform.root.TryGetComponent<Dron>(out var dron))
                 ChunkPlacer.Instance.SpawnChunk();
 
         }
