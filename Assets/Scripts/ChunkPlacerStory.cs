@@ -59,9 +59,9 @@ namespace Hacaton
                     /*var endChunk = _lastChunk.RandomTurning();
                     var turning1 = _lastChunk.turningCross;
                     SetPlace(endChunk);*/
-                    _lastChunk.turningCross = turningCross[1];
-                    var turning1 = _lastChunk.turningCross;
-                    /*_lastChunk.GetComponent<TurningDron>().turning = turning1;*/
+                    //_lastChunk.turningCross = turningCross[1];
+                    var turning1 = turningCross[1];
+                    _lastChunk.GetComponent<TurningDron>().turning = turning1;
 
                     switch (turning1)
                     {
@@ -82,12 +82,19 @@ namespace Hacaton
                 }
                 else
                 {
-                    var endPoit = _lastChunk.endChunks[0];
-                    SetPlace(endPoit);
+                    if (_indexChunk < _chunkPrefabs.Length)
+                    {
+                        var endPoit = _lastChunk.endChunks[0];
+                        SetPlace(endPoit);
+                    }
+                    else
+                    { 
+                       var end = Instantiate(_endChunk, _lastChunk.endChunks[0].position, _lastChunk.endChunks[0].rotation);
+                    }
                 }                
             }
             
-            var end = Instantiate(_endChunk, _lastChunk.endChunks[0].position, _lastChunk.endChunks[0].rotation);
+            //var end = Instantiate(_endChunk, _lastChunk.endChunks[0].position, _lastChunk.endChunks[0].rotation);
         }
 
         private void SetPlaceStopCross(Transform transform, Transform transform1)
@@ -100,7 +107,7 @@ namespace Hacaton
 
             Chunk newChunk2 = Instantiate(_chunkPrefabs[_indexChunk], transform1.position, transform1.rotation);
             var offset1 = newChunk2.transform.position - newChunk2.beginChunk.transform.position;
-            newChunk.transform.position += offset1;
+            newChunk2.transform.position += offset1;
             _indexChunk++;
 
 
